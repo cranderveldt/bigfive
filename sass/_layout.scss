@@ -5,7 +5,7 @@ html {
 body {
   @include font-size;
   min-height: 100%;
-  background: #525252;
+  background: #FFF;
   // background: #888;
 }
 body, select, input, button, label {
@@ -49,131 +49,23 @@ img {
   max-width: 100%;
   width: auto;
 }
-#tiles {
-  width: 1000px;
+#container {
+  @include max-width(480px);
   margin: auto;
-  position: relative;
-  @extend .clearfix;
-  .tile {
-    float: left;
-    cursor: pointer;
-    position: relative;
-    &.fog-true {
-      opacity: 0;
-    }
-    img {
-      display: block;
-      position: relative;
-      z-index: 0;
-    }
-    .action {
-      position: absolute;
-      cursor: pointer;
-      top: 50%;
-      color: #AAA;
-      z-index: 1;
-    }
-    .source {
-      left: 50%;
-      margin-left: -20px;
-      margin-top: 5px;
-    }
-    select {
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-    .rotate {
-      right: 50%;
-      margin-right: -20px;
-      margin-top: 5px;
-    }
-    .fog {
-      left: 50%;
-      margin-top: -25px;
-      margin-left: -20px;
-      &.fog-false {
-        color: green;
-      }
-    }
-    .flag {
-      right: 50%;
-      margin-top: -25px;
-      margin-right: -20px;
-      &.flag-blue {
-        color: blue;
-      }
-      &.flag-red {
-        color: red;
-      }
-      &.flag-green {
-        color: green;
-      }
-      &.flag-orange {
-        color: orange;
-      }
-      &.flag-yellow {
-        color: yellow;
-      }
-      &.flag-purple {
-        color: purple;
-      }
-    }
-    .poi {
-      left: 50%;
-      margin-top: -12px;
-      margin-left: -5px;
-      &.poi-true {
-        color: yellow;
-      }
-    }
-  }
 }
-.legend {
-  @extend .clearfix;
-  width: 1000px;
-  margin: auto;
-  .marker {
-    float: left;
-    width: 100px;
-    height: 30px;
-    @include font-size(24, 1);
-    font-weight: bold;
-    padding: 3px 0;
-    text-align: center;
-  }
+.timer {
+  @include font-size(72, 1);
+  margin: 20px 0;
 }
-.axis {
-  position: absolute;
-  left: -40px;
-  top: 0;
-  .marker {
-    width: 40px;
-    height: 100px;
-    @include font-size(24, 1);
-    font-weight: bold;
-    padding: 38px 0;
-    text-align: center;
-  }
+.btn {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  @include font-size(32, 1);
+  font-weight: bold;
+  text-shadow: none;
 }
-.rotate0deg {
-  @include rotate(0deg);
-}
-.rotate90deg {
-  @include rotate(90deg);
-}
-.rotate180deg {
-  @include rotate(180deg);
-}
-.rotate270deg {
-  @include rotate(270deg);
-}
-.absolute-group {
-  position: absolute;
-  top: 0;
-  left: 0;
+.form-control {
+  @include font-size(24, 1);
+  height: auto;
+  padding: 15px;
 }

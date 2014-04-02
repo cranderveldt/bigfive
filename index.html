@@ -2,7 +2,7 @@
 <html lang="en" ng-app="bigfive">
 <head>
   <meta charset="UTF-8">
-  <title>Tiles</title>
+  <title>Big Five</title>
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/jquery.js"></script>
   <script src="js/lib.js"></script>
@@ -10,9 +10,57 @@
   <script src="js/script.js"></script>
 </head>
 <body ng-controller="Main">
-  <div class="exercises">
-    <div class="exercise" ng-repeat="ex in workout">
-      <h2></h2>
+  <div id="container">
+    <div class="exercises" ng-hide="finished">
+      <div class="exercise" ng-show="workout.active === $index" ng-repeat="ex in workout.routine track by $index">
+        <h2 ng-bind="ex.name"></h2>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Reps" ng-model="ex.reps">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Weight" ng-model="ex.weight">
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" placeholder="Time" ng-model="ex.time">
+        </div>
+        <div class="timer" ng-bind="convertTimeSecs(ex.time)"></div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-6">
+              <button type="button" class="btn btn-primary btn-block" ng-click="toggleTimer(ex)">
+                <span ng-show="ex.id === ''">Start</span>
+                <span ng-hide="ex.id === ''">Stop</span>
+              </button>
+            </div>
+            <div class="col-xs-6">
+              <button type="button" class="btn btn-danger btn-block" ng-click="resetTimer(ex)">Reset</button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-6">
+              <button type="button" class="btn btn-default btn-block" ng-hide="$index === 0" ng-click="changeRoutine(-1)">Prev</button>
+            </div>
+            <div class="col-xs-6">
+              <button type="button" class="btn btn-primary btn-block" ng-hide="$index === 4" ng-click="changeRoutine(1)">Next</button>
+              <button type="button" class="btn btn-warning btn-block" ng-show="$index === 4" ng-click="saveData()">Finish</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="history" ng-show="finished">
+      <div class="workout" ng-repeat="wo in history">
+        <h3>Workout on <span ng-bind="wo.date"></span></h3>
+        <div class="exercise" ng-repeat="ex in wo.routine track by $index">
+          <h4 ng-bind="ex.name"></h4>
+          <label class="control-label" ng-bind="ex.reps"></label>
+          <label class="control-label" ng-bind="ex.weight"></label>
+          <label class="control-label" ng-bind="convertTimeSecs(ex.time)"></label>
+        </div>
+      </div>
+      <button type="button" class="btn btn-warning btn-block" ng-click="reviewWorkout()">Edit Latest Workout</button>
     </div>
   </div>
 </body>
