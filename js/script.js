@@ -65,7 +65,7 @@ var Main = function ($scope, $interval) {
     return mins + ':' + seconds;
   };
   $scope.convertTimeSecs = function(mil) {
-    return (Math.floor(mil / 1000)) + ' seconds';
+    return (Math.floor(mil / 1000)) + ' secs';
   };
   $scope.toggleTimer = function(ex) {
     if (ex.id === '') {

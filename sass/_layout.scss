@@ -52,6 +52,7 @@ img {
 #container {
   @include max-width(480px);
   margin: auto;
+  padding: 0 15px;
 }
 .timer {
   @include font-size(72, 1);
