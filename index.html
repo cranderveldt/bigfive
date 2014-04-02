@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="dnd-tiles">
+<html lang="en" ng-app="bigfive">
 <head>
   <meta charset="UTF-8">
   <title>Tiles</title>
@@ -10,69 +10,10 @@
   <script src="js/script.js"></script>
 </head>
 <body ng-controller="Main">
-  <section class="map map-{{map.name}}" ng-repeat="map in maps">
-    <div class="legend" ng-hide="map.fog">
-      <div class="marker">A</div>
-      <div class="marker">B</div>
-      <div class="marker">C</div>
-      <div class="marker">D</div>
-      <div class="marker">E</div>
-      <div class="marker">F</div>
-      <div class="marker">G</div>
-      <div class="marker">H</div>
-      <div class="marker">I</div>
-      <div class="marker">J</div>
+  <div class="exercises">
+    <div class="exercise" ng-repeat="ex in workout">
+      <h2></h2>
     </div>
-    <div id="tiles" ui-sortable="sortableOptions" tl-sortable ng-model="map.tiles">
-      <div class="axis" ng-hide="map.fog">
-        <div class="marker">1</div>
-        <div class="marker">2</div>
-        <div class="marker">3</div>
-        <div class="marker">4</div>
-        <div class="marker">5</div>
-        <div class="marker">6</div>
-        <div class="marker">7</div>
-        <div class="marker">8</div>
-        <div class="marker">9</div>
-        <div class="marker">10</div>
-        <div class="marker">11</div>
-        <div class="marker">12</div>
-        <div class="marker">13</div>
-        <div class="marker">14</div>
-        <div class="marker">15</div>
-        <div class="marker">16</div>
-      </div>
-      <div class="tile fog-{{tile.fog && map.fog}}" ng-repeat="tile in map.tiles track by $index">
-        <div class="rotate action" ng-hide="map.fog" tl-rotate="{{tile.rotate}}">
-          <i class="fa fa-repeat"></i>
-        </div>
-        <img ng-src="/images/tile-{{tile.src}}.jpg" alt="Tile" class="rotate{{tile.rotate}}deg">
-        <div class="source action" ng-hide="map.fog">
-          <i class="fa fa-bars"></i>
-          <select tl-source>
-            <option value="{{option.num}}" ng-selected="option.num === tile.src" ng-repeat="option in alltiles">{{option.name}}</option>
-          </select>
-        </div>
-        <div class="fog fog-{{tile.fog}} action" tl-toggle-fog ng-hide="map.fog"><i class="fa fa-eye"></i></div>
-        <div class="flag action flag-{{tile.flag}}" ng-hide="map.fog">
-          <i class="fa fa-flag"></i>
-          <select tl-set-flag>
-            <option value="none" ng-selected="tile.src === 'none'">None</option>
-            <option value="blue" ng-selected="tile.src === 'blue'">Blue</option>
-            <option value="red" ng-selected="tile.src === 'red'">Red</option>
-            <option value="green" ng-selected="tile.src === 'green'">Green</option>
-            <option value="orange" ng-selected="tile.src === 'orange'">Orange</option>
-            <option value="yellow" ng-selected="tile.src === 'yellow'">Yellow</option>
-            <option value="purple" ng-selected="tile.src === 'purple'">Purple</option>
-          </select>
-        </div>
-        <div class="poi action poi-{{tile.poi}}" tl-toggle-poi ng-hide="map.fog"><i class="fa fa-star"></i></div>
-      </div>
-    </div>
-    <div class="absolute-group">
-      <button tl-add-tile class="btn btn-primary"><i class="fa fa-plus"></i></button>
-      <button tl-toggle-global-fog class="btn btn-primary"><i class="fa fa-eye"></i></button>
-    </div>
-  </section>
+  </div>
 </body>
 </html>
