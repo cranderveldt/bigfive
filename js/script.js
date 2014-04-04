@@ -97,7 +97,7 @@ var Main = function ($scope, $interval) {
       $interval.cancel(ex.id);
       ex.id = '';
     }
-    ex.time = 0;
+    ex.time = -5000;
   };
   $scope.reviewWorkout = function() {
     location.reload();
