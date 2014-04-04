@@ -58,6 +58,18 @@ img {
 .timer {
   @include font-size(72, 1);
   margin: 10px 0;
+  &.countdown {
+    background: #ddd;
+    color: #777;
+  }
+  &.golden {
+    background: green;
+    color: #FFF;
+  }
+  &.over {
+    background: red;
+    color: #FFF;
+  }
 }
 .btn {
   padding-top: 20px;

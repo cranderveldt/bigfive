@@ -24,7 +24,7 @@
         <div class="form-group">
           <input type="number" class="form-control ng-hide" placeholder="Time" ng-model="ex.time">
         </div>
-        <div class="timer text-center" ng-bind="convertTimeSecs(ex.time)"></div>
+        <div class="timer text-center" ng-class="ex.status" ng-bind="convertTimeSecs(ex)"></div>
         <div class="form-group">
           <div class="row">
             <div class="col-xs-6">
@@ -58,7 +58,7 @@
           <h4 ng-bind="ex.name"></h4>
           <label class="control-label" ng-bind="ex.reps"></label>
           <label class="control-label" ng-bind="ex.weight"></label>
-          <label class="control-label" ng-bind="convertTimeSecs(ex.time)"></label>
+          <label class="control-label" ng-bind="convertTimeSecs(ex)"></label>
         </div>
       </div>
       <button type="button" class="btn btn-warning btn-block" ng-click="reviewWorkout()">Edit Latest Workout</button>

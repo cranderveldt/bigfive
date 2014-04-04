@@ -18,11 +18,11 @@ var Main = function ($scope, $interval) {
       date: today
     , active: 0
     , routine: [
-        { name: 'Row', weight: '', time: 0, reps: '', id: ''}
-      , { name: 'Chest Press', weight: '', time: 0, reps: '', id: ''}
-      , { name: 'Pulldown', weight: '', time: 0, reps: '', id: ''}
-      , { name: 'Overhead Press', weight: '', time: 0, reps: '', id: ''}
-      , { name: 'Leg Press', weight: '', time: 0, reps: '', id: ''}
+        { name: 'Row', weight: '', time: -5000, reps: '', id: ''}
+      , { name: 'Chest Press', weight: '', time: -5000, reps: '', id: ''}
+      , { name: 'Pulldown', weight: '', time: -5000, reps: '', id: ''}
+      , { name: 'Overhead Press', weight: '', time: -5000, reps: '', id: ''}
+      , { name: 'Leg Press', weight: '', time: -5000, reps: '', id: ''}
     ]
   };
   $scope.finished = false;
@@ -64,8 +64,21 @@ var Main = function ($scope, $interval) {
     } 
     return mins + ':' + seconds;
   };
-  $scope.convertTimeSecs = function(mil) {
-    return (Math.floor(mil / 1000)) + ' secs';
+  $scope.convertTimeSecs = function(ex) {
+    var secs = Math.floor(ex.time / 1000);
+    if (secs < 0) {
+      ex.status = 'countdown';
+    }
+    if (secs >= 0 && secs < 60) {
+      ex.status = 'workout';
+    }
+    if (secs >= 60 && secs <= 90) {
+      ex.status = 'golden';
+    }
+    if (secs > 90) {
+      ex.status = 'over';
+    }
+    return secs + ' secs';
   };
   $scope.toggleTimer = function(ex) {
     if (ex.id === '') {
