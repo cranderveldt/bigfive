@@ -78,6 +78,9 @@ img {
   font-weight: bold;
   text-shadow: none;
 }
+.btn-block + .btn-block {
+  margin: 0;
+}
 .form-control {
   @include font-size(20, 1);
   height: auto;
