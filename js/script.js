@@ -61,7 +61,7 @@ var Main = function ($scope, $interval) {
   };
   $scope.loadData();
   $scope.changeRoutine = function(num) {
-    if (($scope.workout.active && num < 0) || ($scope.workout.active === ($scope.workout.routine.length -1) && num > 1)) {
+    if (($scope.workout.active === 0 && num < 0) || ($scope.workout.active === ($scope.workout.routine.length -1) && num > 1)) {
       // nothing
     } else {
       $scope.workout.active = $scope.workout.active + num;

@@ -11,7 +11,7 @@
   <script src="js/script.js"></script>
 </head>
 <body ng-controller="Main">
-  <div id="container" ng-swipe-right="changeRoutine(1)" ng-swipe-left="changeRoutine(-1)">
+  <div id="container" ng-swipe-right="changeRoutine(-1)" ng-swipe-left="changeRoutine(1)">
     <div class="exercises" ng-hide="finished">
       <div class="exercise" ng-show="workout.active === $index" ng-repeat="ex in workout.routine track by $index">
         <div class="form-group">
