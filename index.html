@@ -33,15 +33,12 @@
         <div class="form-group">
           <div class="row">
             <div class="col-xs-6">
-              <button type="button" class="btn btn-default btn-block" ng-show="$index === 0" ng-click="saveData()">History</button>
-              <button type="button" class="btn btn-default btn-block" ng-hide="$index === 0" ng-click="">Prev</button>
+              <button type="button" class="btn btn-link btn-block" ng-click="resetTimer(ex)">Reset</button>
             </div>
             <div class="col-xs-6">
-              <button type="button" class="btn btn-primary btn-block" ng-hide="$index === 4" ng-click="changeRoutine(1)">Next</button>
-              <button type="button" class="btn btn-warning btn-block" ng-show="$index === 4" ng-click="saveData()">Finish</button>
+              <button type="button" class="btn btn-warning btn-block" ng-click="saveData()">Save</button>
             </div>
           </div>
-          <button type="button" class="btn btn-link btn-block" ng-click="resetTimer(ex)">Reset</button>
         </div>
       </div>
     </div>
