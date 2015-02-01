@@ -61,7 +61,11 @@ var Main = function ($scope, $interval) {
   };
   $scope.loadData();
   $scope.changeRoutine = function(num) {
-    $scope.workout.active = $scope.workout.active + num;
+    if (($scope.workout.active && num < 0) || ($scope.workout.active === ($scope.workout.routine.length -1) && num > 1)) {
+      // nothing
+    } else {
+      $scope.workout.active = $scope.workout.active + num;
+    }
   };
   $scope.convertTimeMins = function(mil) {
     var secs = Math.floor(mil / 1000);
