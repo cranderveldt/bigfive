@@ -26,9 +26,15 @@ var Main = function ($scope, $interval) {
     ]
   };
   $scope.finished = false;
-  $scope.loadWorkout = function(item) {
+  $scope.loadWorkout = function(item, should_reset_time) {
+    should_reset_time = should_reset_time || false;
     var index = _.indexOf($scope.history, item);
     $scope.remove($scope.history, index);
+    if (should_reset_time) {
+      for (var r in item.routine) {
+        item.routine[r].time = -5000;
+      }
+    }
     $scope.workout = item;
   };
   $scope.remove = function(array, index){
@@ -44,6 +50,8 @@ var Main = function ($scope, $interval) {
     });
     if (currentWorkout !== undefined) {
       $scope.loadWorkout(currentWorkout);
+    } else if ($scope.history.length > 0) {
+      $scope.loadWorkout($scope.history[$scope.history.length -1], true);
     }
   };
   $scope.saveData = function() {
@@ -103,7 +111,7 @@ var Main = function ($scope, $interval) {
     location.reload();
   };
 };
-var app = angular.module('bigfive', []);
+var app = angular.module('bigfive', ['ngTouch']);
 app.controller('Main',['$scope','$interval', Main]);
 app.directive('tlRotate', function () {
   return {
