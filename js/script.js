@@ -113,14 +113,14 @@ var Main = function ($scope, $interval) {
 };
 var app = angular.module('bigfive', ['ngTouch']);
 app.controller('Main',['$scope','$interval', Main]);
-app.directive('tlRotate', function () {
-  return {
-    replace: false,
-    transclude: false,
-    restrict: 'A',
-    scope: false,
-    link: function ($scope, element, attrs) {
+// app.directive('tlRotate', function () {
+//   return {
+//     replace: false,
+//     transclude: false,
+//     restrict: 'A',
+//     scope: false,
+//     link: function ($scope, element, attrs) {
       
-    }
-  };
-});
+//     }
+//   };
+// });
