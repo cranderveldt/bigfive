@@ -49,9 +49,9 @@ var Main = function ($scope, $interval) {
       return item.date === today;
     });
     if (currentWorkout !== undefined) {
-      $scope.loadWorkout(currentWorkout);
+      $scope.loadWorkout(currentWorkout, false);
     } else if ($scope.history.length > 0) {
-      $scope.loadWorkout($scope.history[$scope.history.length -1], true);
+      $scope.loadWorkout($scope.history[$scope.history.length-1], true);
     }
   };
   $scope.saveData = function() {
@@ -66,6 +66,7 @@ var Main = function ($scope, $interval) {
     } else {
       $scope.workout.active = $scope.workout.active + num;
     }
+    $('#exercise-carousel').css('left', $scope.workout.active * 305 * -1);
   };
   $scope.convertTimeMins = function(mil) {
     var secs = Math.floor(mil / 1000);
