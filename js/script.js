@@ -26,15 +26,11 @@ var Main = function ($scope, $interval) {
     ]
   };
   $scope.finished = false;
-  $scope.loadWorkout = function(item, should_reset_time) {
-    should_reset_time = should_reset_time || false;
+  $scope.loadWorkout = function(item, reset) {
+    reset = reset || function(){};
     var index = _.indexOf($scope.history, item);
     $scope.remove($scope.history, index);
-    if (should_reset_time) {
-      for (var r in item.routine) {
-        item.routine[r].time = -5000;
-      }
-    }
+    reset(item.routine);
     $scope.workout = item;
   };
   $scope.remove = function(array, index){
@@ -49,9 +45,13 @@ var Main = function ($scope, $interval) {
       return item.date === today;
     });
     if (currentWorkout !== undefined) {
-      $scope.loadWorkout(currentWorkout, false);
+      $scope.loadWorkout(currentWorkout);
     } else if ($scope.history.length > 0) {
-      $scope.loadWorkout($scope.history[$scope.history.length-1], true);
+      $scope.loadWorkout($scope.history[$scope.history.length-1], function(routine){
+        for (var r in routine) {
+          item.routine[r].time = -5000;
+        }
+      });
     }
   };
   $scope.saveData = function() {
@@ -65,8 +65,8 @@ var Main = function ($scope, $interval) {
       // nothing
     } else {
       $scope.workout.active = $scope.workout.active + num;
+      $('#exercise-carousel').css('left', $scope.workout.active * 305 * -1);
     }
-    $('#exercise-carousel').css('left', $scope.workout.active * 305 * -1);
   };
   $scope.convertTimeMins = function(mil) {
     var secs = Math.floor(mil / 1000);
