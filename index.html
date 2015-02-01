@@ -12,8 +12,8 @@
 </head>
 <body ng-controller="Main">
   <div id="container" ng-swipe-right="changeRoutine(-1)" ng-swipe-left="changeRoutine(1)">
-    <div class="viewport">
-      <div class="exercises clearfix" id="exercise-carousel" ng-hide="finished">
+    <div class="viewport" ng-hide="finished">
+      <div class="exercises clearfix" id="exercise-carousel">
         <div class="exercise" ng-repeat="ex in workout.routine track by $index">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Reps" ng-model="ex.name">
