@@ -49,7 +49,7 @@ var Main = function ($scope, $interval) {
     } else if ($scope.history.length > 0) {
       $scope.loadWorkout($scope.history[$scope.history.length-1], function(routine){
         for (var r in routine) {
-          item.routine[r].time = -5000;
+          routine[r].time = -5000;
         }
       });
     }
